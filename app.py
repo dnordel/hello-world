@@ -352,6 +352,12 @@ class InterviewApp(tk.Tk):
         self.bind_all("<Button-4>", self._on_mousewheel)
         self.bind_all("<Button-5>", self._on_mousewheel)
 
+
+        self.footer_separator = ttk.Separator(self, orient="horizontal")
+        self.footer_separator.pack(fill="x")
+        self.footer = ttk.Frame(self, padding=(8, 6))
+        self.footer.pack(fill="x")
+
     def _on_frame_configure(self, _event):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
@@ -387,7 +393,25 @@ class InterviewApp(tk.Tk):
     def clear_page(self):
         for child in self.page_frame.winfo_children():
             child.destroy()
+        self.clear_footer()
         self.scroll_top()
+
+    def clear_footer(self):
+        for child in self.footer.winfo_children():
+            child.destroy()
+
+    def set_footer_actions(self, left_actions=None, right_actions=None):
+        self.clear_footer()
+
+        left = ttk.Frame(self.footer)
+        left.pack(side="left")
+        for label, command in (left_actions or []):
+            ttk.Button(left, text=label, command=command).pack(side="left", padx=4)
+
+        right = ttk.Frame(self.footer)
+        right.pack(side="right")
+        for label, command in (right_actions or []):
+            ttk.Button(right, text=label, command=command).pack(side="right", padx=4)
 
     def show_start_screen(self):
         self.clear_page()
@@ -566,10 +590,10 @@ class InterviewApp(tk.Tk):
             self.state.current_index = 1
             self.show_trait_screen(0)
 
-        btns = ttk.Frame(frm)
-        btns.pack(fill="x", pady=10)
-        ttk.Button(btns, text="Back to Start", command=self.show_start_screen).pack(side="left")
-        ttk.Button(btns, text="Next", command=go_next).pack(side="right")
+        self.set_footer_actions(
+            left_actions=[("Back to Start", self.show_start_screen)],
+            right_actions=[("Next", go_next)],
+        )
 
     def show_disqualifier_reference(self):
         top = tk.Toplevel(self)
@@ -769,13 +793,17 @@ class InterviewApp(tk.Tk):
             except Exception as e:
                 messagebox.showerror("Finalize Error", f"{e}\n\n{traceback.format_exc()}")
 
-        nav = ttk.Frame(frm)
-        nav.pack(fill="x", pady=8)
-        ttk.Button(nav, text="Back", command=go_back).pack(side="left")
-        ttk.Button(nav, text="Next", command=go_next).pack(side="left", padx=4)
-        ttk.Button(nav, text="Save Draft", command=save_draft).pack(side="left", padx=4)
-        ttk.Button(nav, text="Finalize", command=finalize).pack(side="right")
-        ttk.Button(nav, text="Exit", command=self.destroy).pack(side="right", padx=4)
+        self.set_footer_actions(
+            left_actions=[
+                ("Back", go_back),
+                ("Next", go_next),
+                ("Save Draft", save_draft),
+            ],
+            right_actions=[
+                ("Finalize", finalize),
+                ("Exit", self.destroy),
+            ],
+        )
 
     def validate_before_finalize(self):
         if not self.state.candidate_name.strip():
