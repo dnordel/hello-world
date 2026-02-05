@@ -1,0 +1,31 @@
+{
+  "candidate": {
+    "name": "Jane Doe",
+    "interview_date": "2026-01-15",
+    "track": "preschool"
+  },
+  "current_index": 3,
+  "trait_inputs": {
+    "trait_1": {
+      "raw_score": 4,
+      "question_notes": "Candidate described co-regulation and naming feelings.",
+      "trait_notes": "Strong child-centered language.",
+      "verbatim_notes": "\"I got low, softened my voice, and helped them breathe.\"",
+      "absolute_disqualifier": false
+    },
+    "trait_2": {
+      "raw_score": 3,
+      "question_notes": "Managed stress but limited reflection.",
+      "trait_notes": "Could deepen self-awareness examples.",
+      "verbatim_notes": "",
+      "absolute_disqualifier": false
+    },
+    "trait_3": {
+      "raw_score": 5,
+      "question_notes": "Emphasized consent and safety checks.",
+      "trait_notes": "Excellent rights/safety framing.",
+      "verbatim_notes": "\"I ask before helping and watch body cues.\"",
+      "absolute_disqualifier": false
+    }
+  }
+}
