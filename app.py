@@ -585,22 +585,40 @@ class InterviewApp(tk.Tk):
     def _render_signal_examples(self, parent, trait_id: str):
         data = self.signals.get_for_trait(trait_id)
         box = ttk.LabelFrame(parent, text="Disqualifier signal examples (probe prompts)")
-        box.pack(fill="x", pady=6)
+        box.pack(fill="both", pady=6, expand=True)
+
+        text = tk.Text(
+            box,
+            height=14,
+            wrap="word",
+            font=("TkDefaultFont", self.settings["font_size"]),
+        )
+        ybar = ttk.Scrollbar(box, orient="vertical", command=text.yview)
+        text.configure(yscrollcommand=ybar.set)
+        ybar.pack(side="right", fill="y")
+        text.pack(side="left", fill="both", expand=True)
 
         if not data:
-            ttk.Label(box, text="No signal examples configured for this trait.").pack(anchor="w", padx=6, pady=4)
+            text.insert(END, "No signal examples configured for this trait.")
+            text.config(state="disabled")
             return
 
-        ttk.Label(box, text=f"Question ID: {data.get('question_id', '')}").pack(anchor="w", padx=6)
-        for item in data.get("disqualifier_signals", []):
+        text.insert(END, f"Question ID: {data.get('question_id', '')}\n")
+        text.insert(END, f"Primary question: {data.get('primary_question', '')}\n\n")
+
+        for idx, item in enumerate(data.get("disqualifier_signals", []), start=1):
             t = item.get("disqualifier_type", "")
             auto = "Yes" if item.get("auto_disqualify_if_confirmed") else "No"
-            ttk.Label(box, text=f"• {t} | Auto disqualify if confirmed: {auto}").pack(anchor="w", padx=10, pady=(4, 0))
+            text.insert(END, f"{idx}. {t}\n")
+            text.insert(END, f"   Auto disqualify if confirmed: {auto}\n")
             for ex in item.get("examples", []):
-                ttk.Label(box, text=f"   - {ex}", wraplength=1030).pack(anchor="w", padx=18)
+                text.insert(END, f"   - {ex}\n")
             probe = item.get("probe_to_confirm", "")
             if probe:
-                ttk.Label(box, text=f"   Probe: {probe}", wraplength=1030).pack(anchor="w", padx=18, pady=(0, 4))
+                text.insert(END, f"   Probe: {probe}\n")
+            text.insert(END, "\n")
+
+        text.config(state="disabled")
 
     def show_trait_screen(self, idx: int):
         self.clear_page()
