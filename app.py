@@ -149,7 +149,7 @@ class ScoringEngine:
         else:
             if pct >= 80 and not critical_lt_3:
                 outcome = "Hire"
-            elif 65 <= pct <= 79 and not critical_eq_1:
+            elif 65 <= pct < 80 and not critical_eq_1:
                 outcome = "Borderline"
             else:
                 outcome = "No Hire"
