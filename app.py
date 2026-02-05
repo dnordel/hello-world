@@ -320,6 +320,7 @@ class InterviewApp(tk.Tk):
         self.state = InterviewState(interview_date=date.today().isoformat(), trait_inputs={})
         self.active_traits = []
 
+        self._configure_theme()
         self.apply_font_size(self.settings["font_size"])
         self._build_layout()
         self.show_start_screen()
@@ -336,7 +337,7 @@ class InterviewApp(tk.Tk):
         self.main_holder = ttk.Frame(self)
         self.main_holder.pack(fill="both", expand=True)
 
-        self.canvas = tk.Canvas(self.main_holder, highlightthickness=0)
+        self.canvas = tk.Canvas(self.main_holder, highlightthickness=0, bg="#f3f5f8")
         self.v_scroll = ttk.Scrollbar(self.main_holder, orient="vertical", command=self.canvas.yview)
         self.canvas.configure(yscrollcommand=self.v_scroll.set)
         self.v_scroll.pack(side="right", fill="y")
@@ -352,6 +353,12 @@ class InterviewApp(tk.Tk):
         self.bind_all("<Button-4>", self._on_mousewheel)
         self.bind_all("<Button-5>", self._on_mousewheel)
 
+
+        self.footer_separator = ttk.Separator(self, orient="horizontal")
+        self.footer_separator.pack(fill="x")
+        self.footer = ttk.Frame(self, padding=(8, 6))
+        self.footer.pack(fill="x")
+
     def _on_frame_configure(self, _event):
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
 
@@ -366,9 +373,27 @@ class InterviewApp(tk.Tk):
         else:
             self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
+    def _configure_theme(self):
+        self.configure(background="#f3f5f8")
+        style = ttk.Style(self)
+        try:
+            style.theme_use("clam")
+        except tk.TclError:
+            pass
+
+        style.configure("TFrame", background="#f3f5f8")
+        style.configure("TLabel", background="#f3f5f8")
+        style.configure("TLabelframe", background="#ffffff", borderwidth=1, relief="solid")
+        style.configure("TLabelframe.Label", background="#ffffff", foreground="#1f2937", font=("TkDefaultFont", self.settings["font_size"] + 1, "bold"))
+        style.configure("TButton", padding=(10, 6))
+        style.configure("TRadiobutton", background="#f3f5f8")
+        style.configure("TCheckbutton", background="#f3f5f8")
+        style.configure("TCombobox", padding=4)
+
     def apply_font_size(self, size: int):
         size = max(MIN_FONT_SIZE, min(MAX_FONT_SIZE, int(size)))
         self.settings["font_size"] = size
+        self._configure_theme()
         for font_name in ("TkDefaultFont", "TkTextFont", "TkMenuFont", "TkHeadingFont", "TkCaptionFont"):
             try:
                 f = tkfont.nametofont(font_name)
@@ -387,7 +412,25 @@ class InterviewApp(tk.Tk):
     def clear_page(self):
         for child in self.page_frame.winfo_children():
             child.destroy()
+        self.clear_footer()
         self.scroll_top()
+
+    def clear_footer(self):
+        for child in self.footer.winfo_children():
+            child.destroy()
+
+    def set_footer_actions(self, left_actions=None, right_actions=None):
+        self.clear_footer()
+
+        left = ttk.Frame(self.footer)
+        left.pack(side="left")
+        for label, command in (left_actions or []):
+            ttk.Button(left, text=label, command=command).pack(side="left", padx=4)
+
+        right = ttk.Frame(self.footer)
+        right.pack(side="right")
+        for label, command in (right_actions or []):
+            ttk.Button(right, text=label, command=command).pack(side="right", padx=4)
 
     def show_start_screen(self):
         self.clear_page()
@@ -491,6 +534,12 @@ class InterviewApp(tk.Tk):
         school_combo = ttk.Combobox(school_row, textvariable=school_var, values=self.school_options)
         school_combo.pack(side="left", fill="x", expand=True)
 
+        def open_school_dropdown(_event=None):
+            school_combo.focus_set()
+            school_combo.after_idle(lambda: school_combo.event_generate("<Down>"))
+
+        school_combo.bind("<Button-1>", open_school_dropdown)
+
         def add_school():
             value = school_var.get().strip()
             if not value:
@@ -566,10 +615,10 @@ class InterviewApp(tk.Tk):
             self.state.current_index = 1
             self.show_trait_screen(0)
 
-        btns = ttk.Frame(frm)
-        btns.pack(fill="x", pady=10)
-        ttk.Button(btns, text="Back to Start", command=self.show_start_screen).pack(side="left")
-        ttk.Button(btns, text="Next", command=go_next).pack(side="right")
+        self.set_footer_actions(
+            left_actions=[("Back to Start", self.show_start_screen)],
+            right_actions=[("Next", go_next)],
+        )
 
     def show_disqualifier_reference(self):
         top = tk.Toplevel(self)
@@ -584,38 +633,69 @@ class InterviewApp(tk.Tk):
 
     def _render_signal_examples(self, parent, trait_id: str):
         data = self.signals.get_for_trait(trait_id)
-        box = ttk.LabelFrame(parent, text="Disqualifier signal examples (probe prompts)")
-        box.pack(fill="both", pady=6, expand=True)
+        box = ttk.LabelFrame(parent, text="Disqualifier Signal Examples")
+        box.pack(fill="both", pady=8, expand=True)
+
+        ttk.Label(
+            box,
+            text="Use these as probe prompts; they are examples to help pattern-match risk signals.",
+            wraplength=1020,
+            foreground="#334155",
+        ).pack(anchor="w", padx=10, pady=(8, 0))
 
         text = tk.Text(
             box,
-            height=14,
+            height=18,
             wrap="word",
+            relief="flat",
+            bg="#f8fafc",
+            padx=12,
+            pady=10,
             font=("TkDefaultFont", self.settings["font_size"]),
         )
         ybar = ttk.Scrollbar(box, orient="vertical", command=text.yview)
         text.configure(yscrollcommand=ybar.set)
-        ybar.pack(side="right", fill="y")
-        text.pack(side="left", fill="both", expand=True)
+        ybar.pack(side="right", fill="y", pady=8)
+        text.pack(side="left", fill="both", expand=True, padx=8, pady=8)
+
+        text.tag_configure("header", font=("TkDefaultFont", self.settings["font_size"] + 1, "bold"), foreground="#0f172a")
+        text.tag_configure("meta", foreground="#334155")
+        text.tag_configure("signal", font=("TkDefaultFont", self.settings["font_size"], "bold"), foreground="#1d4ed8")
+        text.tag_configure("probe", foreground="#7c2d12")
 
         if not data:
-            text.insert(END, "No signal examples configured for this trait.")
+            text.insert(END, "No signal examples configured for this trait.", "meta")
             text.config(state="disabled")
             return
 
-        text.insert(END, f"Question ID: {data.get('question_id', '')}\n")
-        text.insert(END, f"Primary question: {data.get('primary_question', '')}\n\n")
+        text.insert(END, "Question Context\n", "header")
+        text.insert(END, f"Question ID: {data.get('question_id', '')}\n", "meta")
+        text.insert(END, f"Primary question: {data.get('primary_question', '')}\n\n", "meta")
 
-        for idx, item in enumerate(data.get("disqualifier_signals", []), start=1):
-            t = item.get("disqualifier_type", "")
+        signal_items = data.get("disqualifier_signals") or data.get("signals") or []
+        if not signal_items:
+            text.insert(END, "No signal examples configured for this trait.", "meta")
+            text.config(state="disabled")
+            return
+
+        for idx, item in enumerate(signal_items, start=1):
+            raw_type = item.get("disqualifier_type", "")
+            friendly_type = raw_type.replace("_", " ").title() if raw_type else "Unspecified"
             auto = "Yes" if item.get("auto_disqualify_if_confirmed") else "No"
-            text.insert(END, f"{idx}. {t}\n")
-            text.insert(END, f"   Auto disqualify if confirmed: {auto}\n")
-            for ex in item.get("examples", []):
-                text.insert(END, f"   - {ex}\n")
+
+            text.insert(END, f"Signal {idx}: {friendly_type}\n", "signal")
+            text.insert(END, f"Auto disqualify if confirmed: {auto}\n", "meta")
+
+            examples = item.get("examples", [])
+            if examples:
+                for ex in examples:
+                    text.insert(END, f"• {ex}\n")
+            else:
+                text.insert(END, "• No examples listed.\n", "meta")
+
             probe = item.get("probe_to_confirm", "")
             if probe:
-                text.insert(END, f"   Probe: {probe}\n")
+                text.insert(END, f"Probe to confirm: {probe}\n", "probe")
             text.insert(END, "\n")
 
         text.config(state="disabled")
@@ -639,10 +719,11 @@ class InterviewApp(tk.Tk):
         frm = ttk.Frame(self.page_frame, padding=12)
         frm.pack(fill="both", expand=True)
 
-        ttk.Label(frm, text=f"Trait {idx + 1} of {len(self.active_traits)}", font=("TkDefaultFont", self.settings["font_size"] + 1, "bold")).pack(anchor="w")
-        ttk.Label(frm, text=trait["name"], font=("TkDefaultFont", self.settings["font_size"] + 4, "bold")).pack(anchor="w", pady=4)
-        ttk.Label(frm, text=f"Priority: {trait['priority']} | Weight: x{trait['weight']}").pack(anchor="w")
-        ttk.Label(frm, text=f"Primary Question: {trait['primary_question']}", wraplength=1050).pack(anchor="w", pady=6)
+        intro = ttk.LabelFrame(frm, text=f"Trait {idx + 1} of {len(self.active_traits)}")
+        intro.pack(fill="x", pady=6)
+        ttk.Label(intro, text=trait["name"], font=("TkDefaultFont", self.settings["font_size"] + 4, "bold")).pack(anchor="w", padx=10, pady=(8, 2))
+        ttk.Label(intro, text=f"Priority: {trait['priority']} | Weight: x{trait['weight']}", foreground="#334155").pack(anchor="w", padx=10)
+        ttk.Label(intro, text=f"Primary Question: {trait['primary_question']}", wraplength=1050).pack(anchor="w", padx=10, pady=(4, 10))
 
         ladder_frame = ttk.LabelFrame(frm, text="Scoring descriptors (1-5)")
         ladder_frame.pack(fill="x", pady=4)
@@ -763,13 +844,17 @@ class InterviewApp(tk.Tk):
             except Exception as e:
                 messagebox.showerror("Finalize Error", f"{e}\n\n{traceback.format_exc()}")
 
-        nav = ttk.Frame(frm)
-        nav.pack(fill="x", pady=8)
-        ttk.Button(nav, text="Back", command=go_back).pack(side="left")
-        ttk.Button(nav, text="Next", command=go_next).pack(side="left", padx=4)
-        ttk.Button(nav, text="Save Draft", command=save_draft).pack(side="left", padx=4)
-        ttk.Button(nav, text="Finalize", command=finalize).pack(side="right")
-        ttk.Button(nav, text="Exit", command=self.destroy).pack(side="right", padx=4)
+        self.set_footer_actions(
+            left_actions=[
+                ("Back", go_back),
+                ("Next", go_next),
+                ("Save Draft", save_draft),
+            ],
+            right_actions=[
+                ("Finalize", finalize),
+                ("Exit", self.destroy),
+            ],
+        )
 
     def validate_before_finalize(self):
         if not self.state.candidate_name.strip():
