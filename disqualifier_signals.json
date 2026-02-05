@@ -1,727 +1,658 @@
 {
-  "schema_version": "1.0",
-  "notes": {
-    "usage": "Disqualifier-signal examples for each primary interview question. Use these as pattern prompts for probing. Some signals are automatic disqualifiers if confirmed; others are cautionary until probed and confirmed.",
-    "disqualifier_types": [
-      "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
-      "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
-      "EMOTIONAL_DYSREGULATION_RISK",
-      "RESISTS_SUPERVISION_OR_FEEDBACK",
-      "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
-      "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
-      "INTERVIEW_WHILE_WORKING_OR_SUPERVISING_CHILDREN",
-      "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY"
-    ]
-  },
+  "schema_version": "1.1",
+  "design_goal": "Realistic, interview-plausible disqualifier-signal answer snippets. These are subtle, socially acceptable ways a candidate might reveal risk without directly admitting disqualifying traits.",
+  "disqualifier_types": [
+    "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
+    "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
+    "EMOTIONAL_DYSREGULATION_RISK",
+    "RESISTS_SUPERVISION_OR_FEEDBACK",
+    "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
+    "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
+    "INTERVIEW_WHILE_WORKING_OR_SUPERVISING_CHILDREN",
+    "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY"
+  ],
   "questions": [
     {
       "question_id": "U1",
+      "track": "UNIVERSAL",
       "trait_id": "1",
       "trait_name": "Empathy and Respect for Children as Individuals",
-      "track": "UNIVERSAL",
       "primary_question": "Tell me about a time a child was having a hard emotional moment. What did you notice, and how did you respond?",
-      "disqualifier_signals": [
-        {
-          "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "I raised my voice so they knew I meant business, and it worked.",
-            "Sometimes you need to be stern and scare them a little so they stop.",
-            "I told them if they keep crying they’re going to miss the fun activity."
-          ],
-          "probe_to_confirm": "When you say you raised your voice or scared them a little, what exactly did you say and how did the child react?"
-        },
+      "signals": [
         {
           "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Kids that age don’t really have boundaries, they just need direction.",
-            "They were being dramatic. If you give in, they learn they can control you.",
-            "I don’t do the whole feelings thing too much. We have to keep things moving."
+            "I try not to get too into the feelings part, because then it can spiral. I keep it pretty matter-of-fact and move them along.",
+            "Sometimes acknowledging it too much reinforces it, so I keep it brief and redirect.",
+            "I told them we can talk about it when they’re calm, but in the moment we needed to keep the routine going."
           ],
-          "probe_to_confirm": "How do you balance moving things along with honoring a child’s boundaries and emotional needs in the moment?"
+          "probe_to_confirm": "When you say you keep it matter-of-fact, what words do you typically use with the child in that moment?"
+        },
+        {
+          "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "I didn’t yell-yell, but I did use my serious voice so they knew I wasn’t playing.",
+            "I’m pretty firm about it. Once they hear the tone change, they usually stop.",
+            "I had to raise my voice over the noise to get everyone’s attention, then it calmed down."
+          ],
+          "probe_to_confirm": "What does your serious voice sound like, and what exact words did you say?"
         },
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Some kids are just bad. You can tell who has no discipline at home.",
-            "Certain parents create these behaviors, then we have to deal with it.",
-            "These kids are so entitled now."
+            "A lot of it comes from home. You can usually tell when there isn’t much structure.",
+            "Honestly some kids are used to getting their way, so you have to reset that.",
+            "It’s hard because some parents kind of undo everything, and the child knows it."
           ],
-          "probe_to_confirm": "What do you think the child was communicating, and what support do you believe helps children who struggle like that?"
+          "probe_to_confirm": "How do you talk about families and children on the hard days without letting frustration show up with the kids?"
         },
         {
           "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I was already at my limit that day, so I just snapped a little.",
-            "I felt my blood boiling, so I had to shut it down fast.",
-            "If a kid pushes long enough, you’re going to react."
+            "I was already stretched thin that day, so I was definitely shorter than I wanted to be.",
+            "I could feel myself getting frustrated, so I just ended the situation quickly and moved on.",
+            "If it keeps going and going, I’m human, it gets to you."
           ],
-          "probe_to_confirm": "What did 'snapped' look like exactly, and what do you do to prevent that from happening again?"
+          "probe_to_confirm": "When you were shorter than you wanted to be, what did you say or do specifically?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Rules are nice, but real life is different. You do what you have to do.",
-            "Sometimes you just pick them up and move them even if they don’t like it.",
-            "Licensing doesn’t understand what it’s really like."
+            "In a perfect world you do everything exactly by the book, but real life is busy, so you have to be practical.",
+            "Sometimes the policies don’t really match what’s happening in the room, so you adapt.",
+            "You do your best, but you can’t always stop and do the whole script when things are escalating."
           ],
-          "probe_to_confirm": "What boundaries or safety standards do you consider non-negotiable even when it’s hectic?"
+          "probe_to_confirm": "Which parts of being ‘practical’ are you referring to, and what would you never compromise on even when it’s busy?"
         },
         {
           "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Honestly I’m just tired of the constant crying and drama.",
-            "At this point I don’t have the patience like I used to.",
-            "I’m burned out, but that’s childcare."
+            "I’ve learned to not take it so personally anymore, otherwise you burn out fast.",
+            "I just try to get through those moments and not let it drain me, because there are so many every day.",
+            "I’ll be honest, I don’t have the same patience I had when I first started, but I manage."
           ],
-          "probe_to_confirm": "What are you doing today to recover and protect your patience and regulation at work?"
+          "probe_to_confirm": "What do you do outside of work or during the day to actively rebuild patience and regulation?"
         }
       ]
     },
     {
       "question_id": "U2",
+      "track": "UNIVERSAL",
       "trait_id": "2",
       "trait_name": "Emotional Regulation Under Stress",
-      "track": "UNIVERSAL",
       "primary_question": "Tell me about a time you felt overwhelmed with children present. How did you manage yourself?",
-      "disqualifier_signals": [
+      "signals": [
         {
           "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I had to yell to get everyone to listen.",
-            "I get loud when I need control. It’s the only thing that works sometimes.",
-            "I’m not proud of it, but I can’t deal with chaos."
+            "I’m not proud of it, but I got pretty sharp with my voice because it was getting out of hand.",
+            "I just needed everyone to stop, so I got louder than usual and it worked.",
+            "When it’s chaotic, I go into command mode, otherwise you lose the room."
           ],
-          "probe_to_confirm": "What does 'get loud' mean specifically, and what would you do differently next time?"
+          "probe_to_confirm": "What does ‘command mode’ look like in your words, volume, and body language?"
         },
         {
           "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I told them they were acting like babies.",
-            "I said, 'Do you want me to call your mom?' and they stopped.",
-            "I made an example out of one kid so the others would behave."
+            "I told them, ‘You’re too big for this,’ and that usually snaps them out of it.",
+            "I said, ‘This is not okay,’ in a way they could feel, and then it stopped.",
+            "Sometimes you have to be a little scary for a second to keep everyone safe."
           ],
-          "probe_to_confirm": "What was your intention with that comment, and how do you think it impacts a child’s dignity and safety?"
+          "probe_to_confirm": "When you say ‘a little scary,’ what exactly did you do or say?"
         },
         {
           "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I don’t really focus on feelings when things are chaotic. They need structure.",
-            "Kids need to learn the world doesn’t stop for their emotions.",
-            "In that moment I just needed compliance so we could move on."
+            "In those moments I’m not really thinking about feelings. I’m thinking about getting everyone under control.",
+            "Once it’s calm, then we can talk about emotions. During chaos, they just need to comply.",
+            "I don’t want to validate the behavior, so I keep it very straightforward."
           ],
-          "probe_to_confirm": "How do you keep structure while still respecting a child’s emotional state and boundaries?"
+          "probe_to_confirm": "How do you stay straightforward without dismissing a child’s emotional experience or dignity?"
         },
         {
           "disqualifier_type": "RESISTS_SUPERVISION_OR_FEEDBACK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I don’t like people telling me how to handle my classroom.",
-            "Every director has their own opinion. I just do what works.",
-            "I’m not the kind of person who needs someone watching over me."
+            "Different directors have different styles. I usually stick with what I know works.",
+            "I’m open to input, but I don’t love being coached in the moment.",
+            "I’m pretty independent. I don’t really need someone hovering."
           ],
-          "probe_to_confirm": "Tell me about a time a supervisor asked you to change something. What did you change and why?"
+          "probe_to_confirm": "Tell me about a specific time you changed your approach after feedback. What changed and what improved?"
         },
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Some kids are just too much. They ruin it for everyone.",
-            "Parents don’t teach manners anymore, so we’re stuck dealing with it.",
-            "These families expect miracles."
+            "Some kids are just a lot. They can derail the whole day for everyone.",
+            "A lot of the stress comes from parents not following through at home.",
+            "You see the same kids with the same issues, and it gets old."
           ],
-          "probe_to_confirm": "When you feel that way, what helps you stay respectful and child-centered in the moment?"
+          "probe_to_confirm": "When it ‘gets old,’ how do you prevent that feeling from leaking into how you treat the child?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Sometimes you have to do what you have to do, even if it’s not the textbook way.",
-            "Licensing rules are great until you’re alone with too many kids.",
-            "We can’t follow every rule when it’s chaos."
+            "You do what you can, but the guidelines don’t account for real staffing and real behavior.",
+            "Sometimes you have to make a quick call that isn’t perfectly by the book.",
+            "The important thing is results, not whether it looked perfect."
           ],
-          "probe_to_confirm": "Which safety standards do you consider non-negotiable even under stress?"
+          "probe_to_confirm": "What quick calls are you referring to, and what safety and dignity lines do you refuse to cross?"
         },
         {
           "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I’m just over it. I’m tired of being overwhelmed every day.",
-            "I’ve been doing this too long to pretend it doesn’t get to me.",
-            "I need a job where I’m not constantly stressed."
+            "I’m just looking for a place that’s less intense. I’m tired of being overwhelmed.",
+            "I can handle it, but it takes a lot out of you. I’m kind of at my limit with stress.",
+            "I’ve learned to emotionally detach a bit, otherwise it’s too much."
           ],
-          "probe_to_confirm": "What specific steps are you taking to recover your resilience and regulation?"
+          "probe_to_confirm": "What does ‘detach’ look like in practice when a child is distressed and needs co-regulation?"
         }
       ]
     },
     {
       "question_id": "U3",
+      "track": "UNIVERSAL",
       "trait_id": "3",
       "trait_name": "Respect for Children’s Personal Rights and Safety",
-      "track": "UNIVERSAL",
       "primary_question": "Tell me about a time you had to be mindful of a child’s safety, body, or boundaries.",
-      "disqualifier_signals": [
+      "signals": [
         {
           "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I’m not worried about little things like personal space. They’re kids.",
-            "Boundaries are important, but sometimes they don’t get a choice.",
-            "They’ll be fine. A little discomfort isn’t harm."
+            "I respect boundaries, but sometimes you can’t give them choices because they’re little.",
+            "I try to be respectful, but at the end of the day adults have to make the call.",
+            "If it’s for their own good, I don’t overthink the boundary part."
           ],
-          "probe_to_confirm": "How do you decide when a child does or doesn’t get a choice about their body or boundaries?"
+          "probe_to_confirm": "Can you walk me through a moment when a child didn’t want something and how you handled that respectfully?"
         },
         {
           "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "If they won’t move, you look them in the eyes and make them.",
-            "I held their arms so they’d stop hitting. You have to sometimes.",
-            "I carried them out even though they were fighting me."
+            "I had to physically guide them because they weren’t listening and it wasn’t safe.",
+            "I held their hands so they couldn’t hit, just until they calmed down.",
+            "I picked them up and moved them because we couldn’t keep waiting."
           ],
-          "probe_to_confirm": "What alternatives did you try before physical control, and how did you ensure dignity and safety?"
+          "probe_to_confirm": "What alternatives did you try first, and how did you ensure the child’s dignity while you intervened?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Licensing is overly strict and doesn’t match reality.",
-            "I’ve worked places that did it differently and it was fine.",
-            "Those rules are more about paperwork than kids."
+            "Some places take the rules really literally. I focus on common sense.",
+            "I’ve seen a lot of different standards. You just do your best.",
+            "Policies are great, but they don’t cover every real situation."
           ],
-          "probe_to_confirm": "Which safety and boundary expectations do you believe should be followed no matter what?"
+          "probe_to_confirm": "When policy and ‘common sense’ conflict, which one wins and why?"
         },
         {
           "disqualifier_type": "RESISTS_SUPERVISION_OR_FEEDBACK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I already know what’s safe. I don’t need someone correcting me on that.",
-            "I trust my instincts over policies.",
-            "I don’t like being second-guessed on safety."
+            "Safety is pretty basic. I don’t really need coaching on that.",
+            "I’m careful, so I don’t like being corrected on small stuff.",
+            "If someone nitpicks safety, it feels like they don’t trust me."
           ],
-          "probe_to_confirm": "If a supervisor asked you to change a safety practice you believed was fine, what would you do next?"
+          "probe_to_confirm": "If a supervisor asked you to change a safety practice, how would you respond and what would you do next?"
         },
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Some kids use boundaries to manipulate adults.",
-            "Parents complain about everything now.",
-            "Families exaggerate safety concerns."
+            "Parents can be really sensitive about things that aren’t actually a big deal.",
+            "Some kids learn they can say ‘no’ to everything and adults back off.",
+            "You get a lot of complaints that are more about the parent than the child."
           ],
-          "probe_to_confirm": "How do you stay respectful when you feel a concern is exaggerated?"
+          "probe_to_confirm": "How do you keep respect for the family while still treating the child’s dignity and safety as non-negotiable?"
         },
         {
           "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "It’s exhausting to be careful about every little thing.",
-            "Sometimes you don’t have the bandwidth to do all that extra.",
-            "I’m tired of walking on eggshells."
+            "It’s a lot to constantly monitor every little boundary thing all day.",
+            "You end up walking on eggshells, and it’s draining.",
+            "I do my best, but you can’t be perfect about that stuff 100 percent of the time."
           ],
-          "probe_to_confirm": "What support or strategies help you maintain careful, respectful practice consistently?"
+          "probe_to_confirm": "What helps you stay consistent with respect and safety, especially when you’re drained?"
         }
       ]
     },
     {
       "question_id": "U4",
+      "track": "UNIVERSAL",
       "trait_id": "4",
       "trait_name": "Coachability and Openness to Feedback",
-      "track": "UNIVERSAL",
       "primary_question": "Tell me about a time you received feedback you didn’t expect. What happened next?",
-      "disqualifier_signals": [
+      "signals": [
         {
           "disqualifier_type": "RESISTS_SUPERVISION_OR_FEEDBACK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I listened, but I didn’t change anything because I knew I was right.",
-            "I don’t take feedback well from people who haven’t done the job.",
-            "I’m not really into being micromanaged."
+            "I heard them out, but I didn’t really change much because my way works.",
+            "I’m open to feedback, but it depends who it’s coming from.",
+            "I’ll adjust if it makes sense, but I don’t like being told how to do my job."
           ],
-          "probe_to_confirm": "What specific change did you make based on that feedback, and how did you verify it improved anything?"
+          "probe_to_confirm": "What is an example of feedback you implemented even when you didn’t agree at first?"
         },
         {
           "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I got really upset, so I walked out of the conversation.",
-            "I told them off because it wasn’t fair.",
-            "I get defensive when people criticize me."
+            "I took it personally at first and needed space because I was upset.",
+            "I got defensive, I won’t lie, because it felt unfair.",
+            "I had to end the conversation because I was too frustrated."
           ],
-          "probe_to_confirm": "How do you handle correction in the moment so you stay regulated and respectful?"
+          "probe_to_confirm": "What do you do to stay regulated during feedback so the conversation stays respectful and productive?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Policies change all the time, but I do what works regardless.",
-            "Sometimes you have to bend rules to manage kids.",
-            "I’m not going to follow something I don’t agree with."
+            "Sometimes policies change and it’s not practical, so I use my judgment.",
+            "I’ll follow the rule, but if it’s unrealistic I do what’s workable.",
+            "I don’t blindly follow procedures that don’t fit the moment."
           ],
-          "probe_to_confirm": "Which expectations do you see as non-negotiable, and how do you respond when policy conflicts with your preference?"
+          "probe_to_confirm": "What does ‘use my judgment’ mean in a safety-related situation, specifically?"
         },
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Directors always have favorites, so feedback isn’t objective.",
-            "Management just wants control.",
-            "Parents complain and leadership caves, so teachers get blamed."
+            "That place was very political, so feedback wasn’t really about performance.",
+            "Leadership would side with parents no matter what, so teachers got blamed.",
+            "A lot of feedback was just to keep certain families happy."
           ],
-          "probe_to_confirm": "Tell me about a time you disagreed but still implemented feedback respectfully. What did that look like?"
+          "probe_to_confirm": "How do you stay accountable and growth-oriented even when you feel feedback is unfair?"
         },
         {
           "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I’m tired of changing things every time leadership changes.",
-            "I don’t have energy for constant feedback anymore.",
-            "At this point I’m set in my ways."
+            "I’m at a stage where I’m not trying to reinvent myself every year.",
+            "I can take feedback, but constant coaching gets exhausting.",
+            "I’ve been doing this a long time, so I mostly just stick to what I know."
           ],
-          "probe_to_confirm": "What would help you stay open and flexible with ongoing coaching?"
+          "probe_to_confirm": "What helps you stay open to learning and change over time without burning out?"
         }
       ]
     },
     {
       "question_id": "U5",
+      "track": "UNIVERSAL",
       "trait_id": "5",
       "trait_name": "Reliability and Accountability",
-      "track": "UNIVERSAL",
       "primary_question": "Tell me about a time something didn’t go as planned at work and your role in it.",
-      "disqualifier_signals": [
-        {
-          "disqualifier_type": "RESISTS_SUPERVISION_OR_FEEDBACK",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "They kept questioning me, but I had already handled it.",
-            "I don’t like being monitored if I’m doing my job.",
-            "Documentation is just bureaucracy."
-          ],
-          "probe_to_confirm": "How do you respond when a supervisor asks for documentation or a change in how you do something?"
-        },
+      "signals": [
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Sometimes you skip steps because you don’t have time.",
-            "We couldn’t follow everything perfectly, but that’s normal.",
-            "Rules are flexible depending on staffing."
+            "We were short-staffed, so we had to cut corners a bit, but nothing bad happened.",
+            "Sometimes you do the best you can and not everything is going to be perfect.",
+            "In childcare you improvise. You can’t always follow every step exactly."
           ],
-          "probe_to_confirm": "Which safety and respect expectations do you consider non-negotiable even when short-staffed?"
+          "probe_to_confirm": "What do you mean by ‘cut corners’ or ‘improvise’ in a way that could affect safety or dignity?"
+        },
+        {
+          "disqualifier_type": "RESISTS_SUPERVISION_OR_FEEDBACK",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "I don’t love being questioned when I already handled it.",
+            "They wanted extra documentation, and it felt unnecessary.",
+            "I’m responsible, so I don’t really need someone checking behind me."
+          ],
+          "probe_to_confirm": "If a supervisor asked you to document or change your process, how would you respond?"
         },
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Parents overreact, so we stopped taking complaints seriously.",
-            "Families lie and then blame teachers.",
-            "Coworkers were lazy so it fell on me."
+            "Parents complained, but they didn’t see the whole picture.",
+            "It turned into a bigger deal because families can be intense.",
+            "Some coworkers make problems and then it lands on everyone else."
           ],
-          "probe_to_confirm": "When a complaint happens, how do you stay respectful and accountable while investigating what’s true?"
-        },
-        {
-          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "I just didn’t care that day.",
-            "I’m not going to stress myself out for a job.",
-            "I’m over being the only responsible person."
-          ],
-          "probe_to_confirm": "What do you do to maintain reliability and follow-through when you feel drained?"
+          "probe_to_confirm": "When there is a complaint, how do you stay respectful and still take accountability for your part?"
         },
         {
           "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I got irritated and said some things, but it needed to be said.",
-            "I was so frustrated I left early.",
-            "When people mess up, I snap."
+            "I was irritated and I said it pretty bluntly.",
+            "I had a moment where I needed to step away because I was frustrated.",
+            "I can get snappy when I’m overwhelmed, but I move on."
           ],
-          "probe_to_confirm": "What does 'snap' look like for you, and what strategies do you use to prevent it?"
+          "probe_to_confirm": "What does ‘snappy’ sound like, and what prevents it from happening again?"
+        },
+        {
+          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "Honestly I was just checked out at that job by then.",
+            "I was running on fumes, so I did what I could.",
+            "I’ve learned not to stress about it too much because it’s never-ending."
+          ],
+          "probe_to_confirm": "What are you doing now to ensure you can show up consistently and fully engaged?"
         }
       ]
     },
     {
       "question_id": "U6",
+      "track": "UNIVERSAL",
       "trait_id": "6",
       "trait_name": "Team Orientation and Collaboration",
-      "track": "UNIVERSAL",
       "primary_question": "Tell me about a challenging situation you worked through with another adult.",
-      "disqualifier_signals": [
+      "signals": [
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "People are so sensitive. I just say it how it is.",
-            "Most coworkers don’t pull their weight.",
-            "Parents are the reason kids act this way."
+            "I’m direct, and not everyone can handle that, but it’s childcare.",
+            "I don’t really do the gossip or drama. If someone has an issue, that’s their thing.",
+            "A lot of people in childcare are too sensitive, so teamwork can be hard."
           ],
-          "probe_to_confirm": "How do you deliver direct feedback without creating fear, shame, or hostility?"
+          "probe_to_confirm": "How do you handle directness without it becoming harsh or intimidating, especially around children?"
         },
         {
           "disqualifier_type": "RESISTS_SUPERVISION_OR_FEEDBACK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I prefer to do my own thing and not be corrected.",
-            "I don’t like being told what to do by leads.",
-            "I’m not a team player if the team is incompetent."
+            "I prefer to just handle my side and not have too many opinions involved.",
+            "I’m a strong worker, so I don’t love being coached by peers or leads.",
+            "I do fine on a team as long as people don’t micromanage."
           ],
-          "probe_to_confirm": "Tell me about a time you disagreed with a lead but still aligned with the team. What did you do?"
+          "probe_to_confirm": "Tell me about a time you aligned with a lead’s direction even when you would have done it differently."
         },
         {
           "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I can get heated, but that’s because I care.",
-            "If someone disrespects me, I’m going to respond.",
-            "Conflict makes me lose my patience."
+            "If someone comes at me, I’m going to match energy. I’m respectful, but I’m not passive.",
+            "I can get pretty heated if I feel like I’m being blamed.",
+            "I had to walk away because I didn’t want to say something I’d regret."
           ],
-          "probe_to_confirm": "What do you do to stay regulated when conflict escalates?"
+          "probe_to_confirm": "What do you do to de-escalate yourself and stay calm when you feel blamed?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "In chaos you do what you have to do.",
-            "I don’t have time to coordinate. I handle kids my way.",
-            "Communication is nice, but it slows everything down."
+            "When it’s busy, you don’t have time to coordinate every little thing, you just act.",
+            "We didn’t always have perfect communication, but we got the job done.",
+            "Sometimes you just handle it and tell the team later."
           ],
-          "probe_to_confirm": "How do you ensure safety and respectful handling when you’re moving fast with other adults involved?"
+          "probe_to_confirm": "What would you never ‘just handle’ alone because it could impact safety, dignity, or supervision?"
         },
         {
           "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I’m tired of people. I’d rather not deal with adults at all.",
-            "I’m done trying to make teams work.",
-            "I don’t have energy for teamwork drama."
+            "Honestly I’m tired of adults. Kids are easier than staff sometimes.",
+            "Team stuff drains me. I like focusing on the kids, not the coworkers.",
+            "I’ve been in enough centers to know teams are always messy."
           ],
-          "probe_to_confirm": "What helps you stay collaborative and respectful even when you’re tired or frustrated?"
+          "probe_to_confirm": "What helps you stay collaborative even when you feel drained or frustrated with adults?"
         }
       ]
     },
     {
       "question_id": "U7",
+      "track": "UNIVERSAL",
       "trait_id": "7",
       "trait_name": "Curiosity and Willingness to Learn",
-      "track": "UNIVERSAL",
       "primary_question": "Tell me something you’ve learned over time that changed how you approach children.",
-      "disqualifier_signals": [
+      "signals": [
         {
           "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Feelings are fine, but they need to toughen up.",
-            "Boundaries are an adult concept.",
-            "Kids don’t really understand rights, they just need direction."
+            "I’ve learned kids need to learn that not everything revolves around their feelings.",
+            "I don’t over-focus on emotions. They still have to follow directions.",
+            "Sometimes giving too many choices creates more issues than it solves."
           ],
-          "probe_to_confirm": "How do you treat a child’s boundaries and emotional experience as non-negotiable in your day-to-day?"
+          "probe_to_confirm": "How do you keep boundaries and expectations while still honoring a child’s emotional experience and bodily autonomy?"
         },
         {
           "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I learned you have to be strict early or they’ll run you.",
-            "You can’t let them win, so you have to shut it down.",
-            "They need to feel consequences so they stop."
+            "I learned you can’t let them test you too long or it spreads.",
+            "You have to shut it down early or the whole group gets wild.",
+            "If you’re too soft, they walk all over you."
           ],
-          "probe_to_confirm": "When you say 'shut it down' or 'strict,' what does that look like in your words and tone?"
+          "probe_to_confirm": "What does ‘shut it down’ mean in your actual words and tone?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I’ve learned rules are flexible depending on the situation.",
-            "You can’t follow every guideline and still run a class.",
-            "Policies are nice, but real life is different."
+            "Every center has different rules, so you learn to be flexible about it.",
+            "I’ve learned policies are guidelines, but you still have to use judgment.",
+            "Sometimes training doesn’t match the reality of a busy classroom."
           ],
-          "probe_to_confirm": "Which safety and respect expectations do you see as non-negotiable regardless of context?"
+          "probe_to_confirm": "Which safety and dignity expectations do you treat as non-negotiable regardless of a center’s culture?"
         },
         {
           "disqualifier_type": "RESISTS_SUPERVISION_OR_FEEDBACK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I don’t really change my approach. It works.",
-            "Trainings are repetitive. I don’t need them.",
-            "I trust my instincts more than coaching."
+            "I’m pretty consistent in my approach. I don’t change it much because it works.",
+            "Trainings are helpful, but a lot of it is repetitive when you’ve done this awhile.",
+            "I’m confident in my style. I’ve found what works for me."
           ],
-          "probe_to_confirm": "Tell me about a time you changed a habit after coaching and what improved as a result."
+          "probe_to_confirm": "What is a recent example of something you changed after feedback, and what improved?"
         },
         {
           "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I’ve learned to stop caring as much or you’ll lose your mind.",
-            "I’m just trying to get through the day.",
-            "You can’t get emotionally invested."
+            "I’ve learned to not get too emotionally involved, otherwise you can’t last.",
+            "I keep my distance a little. It’s the only way to survive long term.",
+            "I used to care more, but you have to protect your peace."
           ],
-          "probe_to_confirm": "What helps you maintain care and patience without burning out?"
+          "probe_to_confirm": "How do you ‘protect your peace’ while still offering warm, attuned care in hard moments?"
         },
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "You can’t fix what parents do at home, so you stop trying.",
-            "Some kids just don’t want to behave.",
-            "Parents are the problem most of the time."
+            "A lot of behavior is home stuff, and you can only do so much.",
+            "Some parents don’t want to hear the truth, so progress is limited.",
+            "Some kids come in with habits that are hard to change."
           ],
-          "probe_to_confirm": "How do you keep respect for families while still holding boundaries and supporting the child?"
+          "probe_to_confirm": "When you feel limited by home factors, how do you keep a respectful, hopeful stance toward the child and family?"
         }
       ]
     },
+
     {
       "question_id": "IT8",
+      "track": "INFANT_TODDLER",
       "trait_id": "8",
       "trait_name": "Gentleness and Physical Awareness",
-      "track": "INFANT_TODDLER",
       "primary_question": "Tell me how you physically care for infants or toddlers during routines like diapering, feeding, or comforting.",
-      "disqualifier_signals": [
+      "signals": [
         {
           "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "You have to hold them still or it’ll never get done.",
-            "If they fight diapering, I just get it over with.",
-            "Sometimes you restrain them a little so you can finish."
+            "Some kids fight diapering, so you just have to be efficient and get it done.",
+            "If they’re wiggly, you keep a good hold so it doesn’t take forever.",
+            "I try to be gentle, but sometimes you have to be firm so it’s safe."
           ],
-          "probe_to_confirm": "What does 'hold them still' look like physically, and what gentler alternatives do you use first?"
+          "probe_to_confirm": "What does ‘a good hold’ look like physically, and what do you do first before being firm?"
         },
         {
           "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "They’re too young to have boundaries.",
-            "I don’t ask, I just do it. They’re infants.",
-            "They don’t understand consent, so it’s not really relevant."
+            "At that age they don’t really understand boundaries, so you just do the routine calmly.",
+            "I don’t ask a lot of questions during diapering. I just keep it quick and normal.",
+            "They cry sometimes, but that doesn’t always mean something is wrong."
           ],
-          "probe_to_confirm": "How do you respect an infant’s cues and bodily boundaries even when they can’t verbalize?"
-        },
-        {
-          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "Infants are a lot. It’s draining.",
-            "I’m over the constant crying.",
-            "I don’t really have the patience for babies anymore."
-          ],
-          "probe_to_confirm": "What do you do to keep your patience and gentleness steady throughout the day?"
+          "probe_to_confirm": "How do you read infant cues and respect their comfort and bodily autonomy even when the routine has to happen?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "You can’t do everything perfectly when you’re busy.",
-            "Sometimes you skip the extra steps.",
-            "If you follow every rule, you’ll fall behind."
+            "When it’s busy, you prioritize the basics and keep moving.",
+            "You do your best, but you can’t do the whole perfect routine every time.",
+            "I focus on getting through all the kids, then circle back if needed."
           ],
-          "probe_to_confirm": "Which safety and handling practices do you consider non-negotiable, even when you’re behind?"
+          "probe_to_confirm": "What do ‘the basics’ include for you that you never skip because it protects safety and dignity?"
+        },
+        {
+          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "Infants are a lot, so you learn to tune out some of the crying.",
+            "It can be draining, especially when it’s constant needs all day.",
+            "I prefer toddlers over infants because the crying can wear you down."
+          ],
+          "probe_to_confirm": "What helps you stay emotionally present and gentle even when the crying is constant?"
         },
         {
           "disqualifier_type": "INTERVIEW_WHILE_WORKING_OR_SUPERVISING_CHILDREN",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Hold on, I need to check on the kids real quick.",
-            "I’m at work right now, but it’s fine, they’re playing.",
-            "Let me mute for a second, I have to handle something with a child."
+            "I’m at work, but it’s quiet right now, so we should be fine.",
+            "If you hear something in the background, I’m just keeping an eye on them.",
+            "I might need to step away for a second if a kid needs me."
           ],
-          "probe_to_confirm": "Are you currently responsible for supervising children right now during this interview?"
+          "probe_to_confirm": "Are you currently responsible for supervising children during this interview?"
         }
       ]
     },
     {
       "question_id": "IT9",
+      "track": "INFANT_TODDLER",
       "trait_id": "9",
       "trait_name": "Patience with Nonverbal Communication",
-      "track": "INFANT_TODDLER",
       "primary_question": "How do you figure out what a nonverbal child needs when they’re upset?",
-      "disqualifier_signals": [
-        {
-          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "Sometimes they just cry for no reason.",
-            "You try everything and it’s still not enough.",
-            "It’s exhausting when they can’t tell you."
-          ],
-          "probe_to_confirm": "What helps you stay patient and regulated when the crying continues and nothing works quickly?"
-        },
+      "signals": [
         {
           "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "They’ll stop eventually. I don’t feed into it.",
-            "Crying is just what they do.",
-            "I don’t pick them up every time. They need to learn."
+            "Sometimes they just need to get it out. If you jump in every time, it never ends.",
+            "I try not to pick them up right away, because then they expect it.",
+            "I give them a minute first, because crying is pretty normal."
           ],
-          "probe_to_confirm": "How do you decide when to respond and how to do it while honoring the child’s emotional needs and safety?"
+          "probe_to_confirm": "How do you decide when ‘a minute’ is supportive versus when the child needs immediate co-regulation?"
         },
         {
           "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "If it goes on too long, I get irritated.",
-            "After a while I just need it to stop.",
-            "I can only take so much crying."
+            "If it goes on too long, it can start to get on your nerves, so you have to stay focused.",
+            "I’ll be honest, sometimes the nonstop crying gets to you.",
+            "After awhile I’m like, okay, we need to move past this."
           ],
-          "probe_to_confirm": "What do you do in the moment to keep your tone and body language calm when you feel irritated?"
+          "probe_to_confirm": "When it gets on your nerves, what do you do to keep your tone, face, and body calm?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I put them somewhere safe and let them cry it out.",
-            "I separate them and ignore it until they stop.",
-            "Sometimes they just need to cry it out, and you move on."
+            "I’ll put them in a safe spot and check back once I’ve handled the other kids.",
+            "You can’t always stop everything for one child, so you rotate attention.",
+            "Sometimes they settle faster if you don’t keep engaging it."
           ],
-          "probe_to_confirm": "How do you ensure the child feels emotionally safe and respected while they’re upset?"
+          "probe_to_confirm": "What does ‘safe spot’ and ‘check back’ mean in terms of emotional safety and respectful care?"
+        },
+        {
+          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "That’s the hardest part of the age group. It can be exhausting day after day.",
+            "You have to build a tough skin or you won’t last.",
+            "I’ve learned to not let it affect me too much."
+          ],
+          "probe_to_confirm": "What do you do to recharge so you can stay warm and patient with infants every day?"
         }
       ]
     },
+
     {
       "question_id": "P10",
+      "track": "PRESCHOOL",
       "trait_id": "10",
       "trait_name": "Positive Behavior Guidance Mindset",
-      "track": "PRESCHOOL",
       "primary_question": "Tell me about a time a child’s behavior was challenging for you. How did you approach it?",
-      "disqualifier_signals": [
+      "signals": [
         {
           "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I raised my voice so everyone understood it’s serious.",
-            "I told them they were being a baby.",
-            "I embarrassed them a little so they wouldn’t do it again."
+            "I didn’t yell, but I did raise my voice because they weren’t taking it seriously.",
+            "I let them know, very clearly, that I wasn’t happy about it, and the room shifted.",
+            "Sometimes you have to be firm enough that they feel it, otherwise it keeps happening."
           ],
-          "probe_to_confirm": "What did you say exactly, and how do you think that impacted the child’s dignity and emotional safety?"
+          "probe_to_confirm": "What did you say word-for-word, and how did you ensure it wasn’t shaming or intimidating?"
         },
         {
           "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I don’t negotiate with kids.",
-            "Feelings don’t change expectations.",
-            "They don’t get a choice when I’ve given an instruction."
+            "I’m not big on negotiating. They need to follow directions.",
+            "I acknowledge it quickly, but expectations are expectations.",
+            "Sometimes you can’t validate everything or you lose control."
           ],
-          "probe_to_confirm": "How do you enforce expectations while still respecting a child’s boundaries and emotional needs?"
+          "probe_to_confirm": "How do you keep expectations without dismissing the child’s emotions or dignity?"
         },
         {
           "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "That kid is always a problem.",
-            "Some kids just don’t care.",
-            "The parents are the issue."
+            "That child was one of those who always has something going on.",
+            "You can usually tell who gets boundaries at home and who doesn’t.",
+            "It’s tough when parents don’t back you up, so behaviors keep repeating."
           ],
-          "probe_to_confirm": "What do you think the behavior was communicating, and how do you keep respect for the child and family?"
+          "probe_to_confirm": "How do you talk about a ‘repeat’ child in a way that stays respectful and hopeful?"
         },
         {
           "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I got fed up and had to shut it down.",
-            "I can only take so much.",
-            "I was at my limit, so I got strict."
+            "I was honestly at my limit, so I got very strict and ended it fast.",
+            "I could feel myself getting worked up, so I just shut it down quickly.",
+            "When it’s constant, it’s hard not to get frustrated."
           ],
-          "probe_to_confirm": "When you’re at your limit, what specific strategies help you stay calm and non-reactive?"
+          "probe_to_confirm": "What does ‘strict’ or ‘shut it down’ look like in your voice, words, and body language?"
         },
         {
           "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "Rules are fine, but sometimes you have to handle it your way.",
-            "Licensing doesn’t know what it’s like with real kids.",
-            "We can’t follow everything perfectly in the moment."
+            "In the moment you do what works, then you document later.",
+            "Policies are helpful, but they don’t always match the behavior you’re seeing.",
+            "I focus on results. The approach depends on the situation."
           ],
-          "probe_to_confirm": "Which boundaries and safety expectations do you consider non-negotiable even when behavior is intense?"
+          "probe_to_confirm": "What approaches do you avoid completely because they risk safety, dignity, or licensing compliance?"
         },
         {
           "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
           "auto_disqualify_if_confirmed": true,
           "examples": [
-            "I’m tired of the same behaviors every day.",
-            "I don’t have patience like I used to.",
-            "I’m just trying to survive the day."
+            "I’m just tired of the same behaviors over and over. It wears you down.",
+            "I can handle it, but it takes a lot out of me these days.",
+            "I’m looking for a calmer environment. I’m kind of burnt out."
           ],
-          "probe_to_confirm": "What are you doing currently to rebuild patience and resilience so you can show up calmly?"
+          "probe_to_confirm": "What are you doing now to rebuild patience and stay emotionally regulated with children?"
         }
       ]
     },
     {
-      "question_id": "P11",
-      "trait_id": "11",
-      "trait_name": "Balance of Structure and Flexibility",
-      "track": "PRESCHOOL",
-      "primary_question": "Tell me about a time your plan changed because of children’s needs. What did you do?",
-      "disqualifier_signals": [
-        {
-          "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "Kids need to learn to follow the schedule.",
-            "They have to adapt, not me.",
-            "If you let them derail the plan, you lose control."
-          ],
-          "probe_to_confirm": "How do you balance structure with responsiveness to children’s emotional needs and cues?"
-        },
-        {
-          "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "It stresses me out when plans change.",
-            "I get irritated when things don’t go as planned.",
-            "I don’t do well with disruptions."
-          ],
-          "probe_to_confirm": "What do you do in the moment to stay calm and prevent frustration from affecting your tone or choices?"
-        },
-        {
-          "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "If they keep pushing, I get strict so they stop.",
-            "I shut it down fast so the rest of the class doesn’t get ideas.",
-            "Sometimes you have to be firm so they know you’re in charge."
-          ],
-          "probe_to_confirm": "What does 'strict' or 'shut it down' look like specifically in your words and tone?"
-        },
-        {
-          "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "They’re always pushing limits.",
-            "Some kids do it on purpose.",
-            "Parents don’t teach structure at home."
-          ],
-          "probe_to_confirm": "What do you believe children are communicating when plans disrupt, and how do you stay respectful?"
-        },
-        {
-          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "I’m tired of adjusting all day.",
-            "It’s nonstop and I’m kind of over it.",
-            "I don’t have the energy to be flexible anymore."
-          ],
-          "probe_to_confirm": "What steps are you taking to restore your patience and flexibility so children still get calm support?"
-        },
-        {
-          "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
-          "auto_disqualify_if_confirmed": true,
-          "examples": [
-            "You do what you have to do when plans fall apart.",
-            "Sometimes the rules slow you down too much.",
-            "Policies don’t always work in real life."
-          ],
-          "probe_to_confirm": "Which safety and respectful treatment standards do you consider non-negotiable no matter what?"
-        }
-      ]
-    }
-  ]
-}
+      "question_id": "P1_
