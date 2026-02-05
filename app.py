@@ -606,7 +606,13 @@ class InterviewApp(tk.Tk):
         text.insert(END, f"Question ID: {data.get('question_id', '')}\n")
         text.insert(END, f"Primary question: {data.get('primary_question', '')}\n\n")
 
-        for idx, item in enumerate(data.get("disqualifier_signals", []), start=1):
+        signal_items = data.get("disqualifier_signals") or data.get("signals") or []
+        if not signal_items:
+            text.insert(END, "No signal examples configured for this trait.")
+            text.config(state="disabled")
+            return
+
+        for idx, item in enumerate(signal_items, start=1):
             t = item.get("disqualifier_type", "")
             auto = "Yes" if item.get("auto_disqualify_if_confirmed") else "No"
             text.insert(END, f"{idx}. {t}\n")
