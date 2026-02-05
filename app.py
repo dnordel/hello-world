@@ -1,10 +1,11 @@
 import json
+import os
 import re
 import traceback
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
-from tkinter import StringVar, IntVar, BooleanVar, END
+from tkinter import Tk, StringVar, IntVar, BooleanVar, END
 from tkinter import filedialog, messagebox
 import tkinter as tk
 from tkinter import ttk
@@ -13,9 +14,8 @@ from docx import Document
 
 
 APP_TITLE = "Structured Preschool Interview Tool"
-APP_DIR = Path(__file__).resolve().parent
-DEFAULT_RUBRIC_PATH = APP_DIR / "rubric.json"
-DEFAULT_BASE_DIR = APP_DIR / "interviews"
+DEFAULT_RUBRIC_PATH = Path("rubric.json")
+DEFAULT_BASE_DIR = Path("interviews")
 
 
 class RubricLoader:
