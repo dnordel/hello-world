@@ -57,3 +57,9 @@
 - One screen per trait is rendered from trait JSON.
 - Scoring reads trait `weight` and `priority`, then applies thresholds from selected track.
 - DOCX output lists all selected trait results with notes and override summary.
+
+## Additional file: disqualifier_signals.json
+
+- Contains per-question disqualifier-signal example statements and probe prompts.
+- App maps entries by `trait_id` and renders them on each trait screen for interviewer reference.
+- Includes fields: `question_id`, `trait_id`, `trait_name`, `track`, and `disqualifier_signals[]` with `disqualifier_type`, `auto_disqualify_if_confirmed`, `examples[]`, `probe_to_confirm`.
