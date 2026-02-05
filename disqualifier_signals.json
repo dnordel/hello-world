@@ -655,4 +655,73 @@
       ]
     },
     {
-      "question_id": "P1_
+      "question_id": "P11",
+      "track": "PRESCHOOL",
+      "trait_id": "11",
+      "trait_name": "Balance of Structure and Flexibility",
+      "primary_question": "Tell me about a time your plan changed because of children’s needs. What did you do?",
+      "signals": [
+        {
+          "disqualifier_type": "MINIMIZES_CHILDRENS_RIGHTS_OR_SAFETY",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "I try not to change plans too much. Kids need to learn the schedule.",
+            "I’ll adjust a little, but I don’t let them take over the day.",
+            "If you change it every time someone is upset, the routine disappears."
+          ],
+          "probe_to_confirm": "How do you keep routine while still responding to children’s emotional needs in a respectful way?"
+        },
+        {
+          "disqualifier_type": "EMOTIONAL_DYSREGULATION_RISK",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "I’ll be honest, last-minute changes stress me out.",
+            "When plans shift, it throws me off and I have to regroup.",
+            "I can get irritated when things keep derailing."
+          ],
+          "probe_to_confirm": "When you feel irritated, what helps you keep your tone and body language calm with children?"
+        },
+        {
+          "disqualifier_type": "JUSTIFIES_YELLING_SHAMING_INTIMIDATION_OR_FORCE",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "If it keeps going, I get very firm so they know it’s not optional.",
+            "I’m not mean, but I make it clear the plan is the plan.",
+            "Sometimes you have to ‘reset’ the room with a strong tone."
+          ],
+          "probe_to_confirm": "What does ‘strong tone’ sound like, and how do you ensure it doesn’t cross into intimidation or shame?"
+        },
+        {
+          "disqualifier_type": "CYNICAL_HOSTILE_CONTEMPT_TOWARD_CHILDREN_OR_FAMILIES",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "A lot of kids are used to being catered to, so they push back on structure.",
+            "Some children will derail things if you let them.",
+            "Parents don’t always teach flexibility, so it becomes a struggle."
+          ],
+          "probe_to_confirm": "How do you interpret ‘push back’ in a child-centered way instead of a control lens?"
+        },
+        {
+          "disqualifier_type": "DISREGARDS_LICENSING_OR_SAFETY_STANDARDS",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "In real life you do what you have to do to keep things moving.",
+            "Sometimes the policy way is too slow for what’s happening.",
+            "I adapt in the moment, then worry about procedure later."
+          ],
+          "probe_to_confirm": "What procedures do you follow first even when you need to move fast, because they protect safety and dignity?"
+        },
+        {
+          "disqualifier_type": "BURNOUT_WITHOUT_OWNERSHIP_OR_RECOVERY",
+          "auto_disqualify_if_confirmed": true,
+          "examples": [
+            "Being flexible all day is exhausting. It’s a lot.",
+            "I’m kind of tired of constantly adjusting to everything.",
+            "At some point you just want a day to go as planned."
+          ],
+          "probe_to_confirm": "What do you do to maintain flexibility and patience consistently, even when you’re tired?"
+        }
+      ]
+    }
+  ]
+}

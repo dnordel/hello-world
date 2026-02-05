@@ -21,6 +21,11 @@ DEFAULT_BASE_DIR = APP_DIR / "interviews"
 DEFAULT_FONT_SIZE = 10
 MIN_FONT_SIZE = 8
 MAX_FONT_SIZE = 18
+DEFAULT_SCHOOL_OPTIONS = [
+    "Hawthorne",
+    "Palmdale",
+    "North Long Beach",
+]
 
 
 class RubricLoader:
@@ -194,12 +199,14 @@ class DocxExporter:
         cname = candidate["name"]
         interview_date = candidate["interview_date"]
         track_key = candidate["track"]
+        school = candidate.get("school", "")
         track_label = rubric["tracks"][track_key]["label"]
 
         doc = Document()
         doc.add_heading("Structured Behavioral Interview Report", level=1)
         doc.add_paragraph(f"Candidate Name: {cname}")
         doc.add_paragraph(f"Interview Date: {interview_date}")
+        doc.add_paragraph(f"School/Location: {school}")
         doc.add_paragraph(f"Track: {track_label}")
 
         doc.add_heading("Score Summary", level=2)
@@ -251,7 +258,8 @@ class DocxExporter:
         if not evidence_added:
             doc.add_paragraph("- None recorded")
 
-        filename = f"{interview_date} - {sanitize_filename(cname)} - Interview.docx"
+        school_part = sanitize_filename(school) if school else "UnknownSchool"
+        filename = f"{interview_date} - {school_part} - {sanitize_filename(cname)} - Interview.docx"
         out_path = self.output_dir / filename
         doc.save(out_path)
         return out_path
@@ -275,6 +283,7 @@ def is_valid_date_yyyy_mm_dd(value: str) -> bool:
 class InterviewState:
     candidate_name: str = ""
     interview_date: str = ""
+    school: str = ""
     track: str = ""
     current_index: int = 0
     trait_inputs: dict = None
@@ -284,6 +293,7 @@ class InterviewState:
             "candidate": {
                 "name": self.candidate_name,
                 "interview_date": self.interview_date,
+                "school": self.school,
                 "track": self.track,
             },
             "current_index": self.current_index,
@@ -301,6 +311,7 @@ class InterviewApp(tk.Tk):
             "base_dir": str(DEFAULT_BASE_DIR),
             "font_size": DEFAULT_FONT_SIZE,
         }
+        self.school_options = DEFAULT_SCHOOL_OPTIONS.copy()
 
         self.rubric_loader = RubricLoader(DEFAULT_RUBRIC_PATH)
         self.rubric = self.rubric_loader.data
@@ -441,10 +452,13 @@ class InterviewApp(tk.Tk):
             self.state = InterviewState(
                 candidate_name=cand.get("name", ""),
                 interview_date=cand.get("interview_date", date.today().isoformat()),
+                school=cand.get("school", ""),
                 track=cand.get("track", ""),
                 current_index=int(payload.get("current_index", 0)),
                 trait_inputs=payload.get("trait_inputs", {}),
             )
+            if self.state.school and self.state.school not in self.school_options:
+                self.school_options.append(self.state.school)
             self.active_traits = self.rubric_loader.get_traits_for_track(self.state.track) if self.state.track else []
             if self.state.current_index <= 0 or not self.active_traits:
                 self.show_candidate_info()
@@ -462,6 +476,7 @@ class InterviewApp(tk.Tk):
 
         name_var = StringVar(value=self.state.candidate_name)
         date_var = StringVar(value=self.state.interview_date or date.today().isoformat())
+        school_var = StringVar(value=self.state.school)
         track_var = StringVar(value=self.state.track)
 
         ttk.Label(frm, text="Candidate Name (required)").pack(anchor="w")
@@ -469,6 +484,24 @@ class InterviewApp(tk.Tk):
 
         ttk.Label(frm, text="Interview Date YYYY-MM-DD (required)").pack(anchor="w")
         ttk.Entry(frm, textvariable=date_var).pack(fill="x", pady=4)
+
+        ttk.Label(frm, text="School (required)").pack(anchor="w")
+        school_row = ttk.Frame(frm)
+        school_row.pack(fill="x", pady=4)
+        school_combo = ttk.Combobox(school_row, textvariable=school_var, values=self.school_options)
+        school_combo.pack(side="left", fill="x", expand=True)
+
+        def add_school():
+            value = school_var.get().strip()
+            if not value:
+                messagebox.showerror("Validation", "Enter a school name before adding.")
+                return
+            if value not in self.school_options:
+                self.school_options.append(value)
+            school_combo.configure(values=self.school_options)
+            school_var.set(value)
+
+        ttk.Button(school_row, text="Add School", command=add_school).pack(side="left", padx=6)
 
         ttk.Label(frm, text="Track (required)").pack(anchor="w")
         tracks = [(k, self.rubric["tracks"][k]["label"]) for k in self.rubric["tracks"].keys()]
@@ -499,6 +532,7 @@ class InterviewApp(tk.Tk):
         def go_next():
             name = name_var.get().strip()
             iv_date = date_var.get().strip()
+            school = school_var.get().strip()
             track = track_var.get().strip()
 
             if not name:
@@ -507,12 +541,16 @@ class InterviewApp(tk.Tk):
             if not is_valid_date_yyyy_mm_dd(iv_date):
                 messagebox.showerror("Validation", "Interview Date must be YYYY-MM-DD.")
                 return
+            if not school:
+                messagebox.showerror("Validation", "School selection is required.")
+                return
             if not track:
                 messagebox.showerror("Validation", "Track selection is required.")
                 return
 
             self.state.candidate_name = name
             self.state.interview_date = iv_date
+            self.state.school = school
             self.state.track = track
 
             self.active_traits = self.rubric_loader.get_traits_for_track(track)
@@ -719,6 +757,8 @@ class InterviewApp(tk.Tk):
             raise ValueError("Candidate Name is required.")
         if not is_valid_date_yyyy_mm_dd(self.state.interview_date.strip()):
             raise ValueError("Interview Date must be valid YYYY-MM-DD.")
+        if not self.state.school.strip():
+            raise ValueError("School selection is required.")
         if not self.state.track:
             raise ValueError("Track selection is required.")
 
