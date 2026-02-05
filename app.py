@@ -636,7 +636,6 @@ class InterviewApp(tk.Tk):
         for n in [5, 4, 3, 2, 1]:
             ttk.Label(sample_frame, text=f"{n}: {trait['sample_answers'][str(n)]}", wraplength=1030).pack(anchor="w")
 
-        self._render_signal_examples(frm, tid)
 
         raw_var = IntVar(value=int(state["raw_score"]) if state.get("raw_score") else 0)
         dq_var = BooleanVar(value=bool(state.get("absolute_disqualifier", False)))
@@ -672,6 +671,8 @@ class InterviewApp(tk.Tk):
         ).pack(anchor="w", pady=4)
 
         ttk.Button(notes_frame, text="View Absolute Disqualifiers Reference", command=self.show_disqualifier_reference).pack(anchor="w")
+
+        self._render_signal_examples(frm, tid)
 
         def persist_state() -> bool:
             raw = raw_var.get()
